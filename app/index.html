@@ -21,20 +21,18 @@
 </head>
 <body>
 
-  <html ng-app="phonecatApp">
-<head>
-  ...
-  <script src="lib/angular/angular.js"></script>
-  <script src="js/controllers.js"></script>
-</head>
-<body ng-controller="PhoneListCtrl">
  
-  <ul>
-    <li ng-repeat="phone in phones">
+  Search: <input ng-model="query">
+  Sort by:
+  <select ng-model="orderProp">
+    <option value="name">Alphabetical</option>
+    <option value="age">Newest</option>
+  </select>
+  <ul class="phones">
+    <li ng-repeat="phone in phones | filter:query | orderBy:orderProp">
       {{phone.name}}
       <p>{{phone.snippet}}</p>
     </li>
   </ul>
- 
 </body>
 </html>
